@@ -1,7 +1,7 @@
 # WebSocket Inspector
 
 ##Inspector? You mean...
-Hi there, I've decided to build this little tool after spending my last two years working with WebSockets: I'd like to 
+I've decided to build this little tool after spending my last two years working with WebSockets: I'd like to 
 have a small utility for debugging and testing.
 
 ##Project's status
