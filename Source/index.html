@@ -2,29 +2,40 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+    <link rel="stylesheet" href="style.css">
+
     <title>WebSocket inspector</title>
 </head>
 <body>
 <header>
-    <h3>Connection status</h3>
-
-    <h3 id="connectionStatus"></h3>
+    <label for="connectionStatus">Connection status</label>
+    <input id="connectionStatus" type="text" disabled value="disconnected">
 </header>
 <article>
     <section id="connectionManagement">
-        <label for="wsAddress"></label>
+        <label for="wsAddress">WebSocket address</label>
         <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server">
-        <label for="protocols"></label>
+        <label for="protocols">Protocols to ask for</label>
         <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ...">
-        <button id="connectionSwitch"></button>
+        <input id="connectionSwitch" type="checkbox" class="button"></button>
+        <label for="connectionSwitch" ><p class="button">Open</p><p class="button">Close</p></label>
     </section>
     <section id="keepAliveManagement">
-        <!-- TODO after dinner :-) -->
+        <label for="pongDelay">Delay before sending Pong</label>
+        <input id="pongDelay" type="number" step="1" min="0" max="60000" value="5000">
+        <input id="keepAliveSwitch" type="checkbox" class="button">
+        <label for="keepAliveSwitch" ><p class="button">On</h3><p class="button">Off</p></label>
+        <label for="pingFrame">Define ping frame</label>
+        <input id="pingFrame" value="" placeholder="server's PING frame">
+        <label for="pongFrame">Define pong frame</label>
+        <input id="pongFrame" value="" placeholder="server's PING frame">
     </section>
     <section id="messageManagement">
         <div id="messagesLog"></div>
         <textarea id="textMessage" cols="24" rows="8"></textarea>
-        <button id="sendMessage"></button>
+        <button id="sendMessage">Send message</button>
     </section>
 </article>
 <footer>

@@ -1,0 +1,15 @@
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox]:checked + label > *:first-child {
+    display: none;
+}
+
+input[type=checkbox]:checked + label > *:nth-child(2) {
+    display: block;
+}
+
+input[type=checkbox] + label > *:nth-child(2) {
+    display: none;
+}
