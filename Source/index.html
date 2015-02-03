@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>WebSocket inspector</title>
+</head>
+<body>
+<header>
+    <h3>Connection status</h3>
+
+    <h3 id="connectionStatus"></h3>
+</header>
+<article>
+    <section id="connectionManagement">
+        <label for="wsAddress"></label>
+        <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server">
+        <label for="protocols"></label>
+        <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ...">
+        <button id="connectionSwitch"></button>
+    </section>
+    <section id="keepAliveManagement">
+        <!-- TODO after dinner :-) -->
+    </section>
+    <section id="messageManagement">
+        <div id="messagesLog"></div>
+        <textarea id="textMessage" cols="24" rows="8"></textarea>
+        <button id="sendMessage"></button>
+    </section>
+</article>
+<footer>
+
+</footer>
+</body>
+</html>
