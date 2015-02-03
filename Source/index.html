@@ -19,21 +19,28 @@
         <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server">
         <label for="protocols">Protocols to ask for</label>
         <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ...">
-        <input id="connectionSwitch" type="checkbox" class="button"></button>
-        <label for="connectionSwitch" ><p class="button">Open</p><p class="button">Close</p></label>
+        <input id="connectionSwitch" type="checkbox" class="button">
+        <label for="connectionSwitch">
+            <span class="button">Open</span>
+            <span class="button">Close</span>
+        </label>
     </section>
     <section id="keepAliveManagement">
         <label for="pongDelay">Delay before sending Pong</label>
         <input id="pongDelay" type="number" step="1" min="0" max="60000" value="5000">
         <input id="keepAliveSwitch" type="checkbox" class="button">
-        <label for="keepAliveSwitch" ><p class="button">On</h3><p class="button">Off</p></label>
+        <label for="keepAliveSwitch">
+            <span class="button">On</span>
+            <span class="button">Off</span>
+        </label>
         <label for="pingFrame">Define ping frame</label>
-        <input id="pingFrame" value="" placeholder="server's PING frame">
+        <input id="pingFrame" type="text" value="" placeholder="server's PING frame">
         <label for="pongFrame">Define pong frame</label>
-        <input id="pongFrame" value="" placeholder="server's PING frame">
+        <input id="pongFrame" type="text" value="" placeholder="server's PING frame">
     </section>
     <section id="messageManagement">
         <div id="messagesLog"></div>
+        <label for="textMessage">Message to send</label>
         <textarea id="textMessage" cols="24" rows="8"></textarea>
         <button id="sendMessage">Send message</button>
     </section>
