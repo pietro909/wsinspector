@@ -2,24 +2,27 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
     <link rel="stylesheet" href="style.css">
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <script type="text/javascript" src="application.js"></script>
     <title>WebSocket inspector</title>
 </head>
-<body>
-<header>
+<body ng-app="wsInspector">
+<header ng-controller="headerController">
     <label for="connectionStatus">Connection status</label>
-    <input id="connectionStatus" type="text" disabled value="disconnected">
+    <input id="connectionStatus" type="text" disabled value="disconnected" ng-model="connectionStatus">
 </header>
-<article>
+<article ng-controller="applicationController">
     <section id="connectionManagement">
         <label for="wsAddress">WebSocket address</label>
-        <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server">
+        <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server"
+               ng-model="wsAddress" ng-disabled="connectionSwitch">
         <label for="protocols">Protocols to ask for</label>
-        <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ...">
-        <input id="connectionSwitch" type="checkbox" class="button">
+        <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ..."
+               ng-model="protocols" ng-disabled="connectionSwitch">
+        <input id="connectionSwitch" type="checkbox" class="button" ng-model="connectionSwitch"
+               ng-change="onConnectionSwitch()">
         <label for="connectionSwitch">
             <span class="button">Open</span>
             <span class="button">Close</span>
