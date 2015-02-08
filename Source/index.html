@@ -11,41 +11,49 @@
 <body ng-app="wsInspector">
 <header ng-controller="headerController">
     <label for="connectionStatus">Connection status</label>
-    <input id="connectionStatus" type="text" disabled value="disconnected" ng-model="connectionStatus">
+    <input id="connectionStatus" type="text" disabled value="disconnected"
+           ng-model="connectionStatus">
 </header>
 <article ng-controller="applicationController">
-    <section id="connectionManagement">
-        <label for="wsAddress">WebSocket address</label>
-        <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server"
-               ng-model="wsAddress" ng-disabled="connectionSwitch">
-        <label for="protocols">Protocols to ask for</label>
-        <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ..."
-               ng-model="protocols" ng-disabled="connectionSwitch">
-        <input id="connectionSwitch" type="checkbox" class="button" ng-model="connectionSwitch"
-               ng-change="onConnectionSwitch()">
-        <label for="connectionSwitch">
-            <span class="button">Open</span>
-            <span class="button">Close</span>
-        </label>
-    </section>
-    <section id="keepAliveManagement">
-        <label for="pongDelay">Delay before sending Pong</label>
-        <input id="pongDelay" type="number" step="1" min="0" max="60000" value="5000">
-        <input id="keepAliveSwitch" type="checkbox" class="button">
-        <label for="keepAliveSwitch">
-            <span class="button">On</span>
-            <span class="button">Off</span>
-        </label>
-        <label for="pingFrame">Define ping frame</label>
-        <input id="pingFrame" type="text" value="" placeholder="server's PING frame">
-        <label for="pongFrame">Define pong frame</label>
-        <input id="pongFrame" type="text" value="" placeholder="server's PING frame">
+    <form class="row">
+        <fieldset id="connectionManagement" class="large-6 column">
+            <legend>Connection management</legend>
+            <label for="wsAddress">WebSocket address</label>
+            <input id="wsAddress" type="text" value="" placeholder="ws://your.websocket.server"
+                   ng-model="wsAddress" ng-disabled="connectionSwitch">
+            <label for="protocols">Protocols to ask for</label>
+            <input id="protocols" type="text" value="" placeholder="blob, base64, arraybuffer, ..."
+                   ng-model="protocols" ng-disabled="connectionSwitch">
+            <input id="connectionSwitch" type="checkbox" class="button" ng-model="connectionSwitch"
+                   ng-change="onConnectionSwitch()">
+            <label for="connectionSwitch">
+                <span class="button">Open</span>
+                <span class="button">Close</span>
+            </label>
+        </fieldset>
+        <fieldset id="keepAliveManagement" class="large-6 column">
+            <legend>Ping/Pong management</legend>
+            <label for="pongDelay">Delay before sending Pong</label>
+            <input id="pongDelay" type="number" step="1" min="0" max="60000" value="5000" ng-model="pongTimeout">
+            <input id="keepAliveSwitch" type="checkbox" class="button">
+            <label for="keepAliveSwitch">
+                <span class="button">On</span>
+                <span class="button">Off</span>
+            </label>
+            <label for="pingFrame">Define ping frame</label>
+            <input id="pingFrame" type="text" value="" placeholder="server's PING frame" ng-model="pingFrame">
+            <label for="pongFrame">Define pong frame</label>
+            <input id="pongFrame" type="text" value="" placeholder="server's PING frame" ng-model="pongFrame">
+            <button id="setKeepAlive" ng-click="setKeepAlive()">Set Ping/Pong</button>
+        </fieldset>
+    </form>
+    <section id="console">
+        <div id="messagesLog"></div>
     </section>
     <section id="messageManagement">
-        <div id="messagesLog"></div>
         <label for="textMessage">Message to send</label>
-        <textarea id="textMessage" cols="24" rows="8"></textarea>
-        <button id="sendMessage">Send message</button>
+        <textarea id="textMessage" cols="24" rows="8" ng-bind="messageBody"></textarea>
+        <button id="sendMessage" ng-click="sendMyMessage()" ng-disabled="!connectionSwitch">Send message</button>
     </section>
 </article>
 <footer>
