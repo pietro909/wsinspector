@@ -38,8 +38,8 @@ angular
 
         /**
          * Opens new websocket connection and bind events to UI, managing error's handling
-         * @param url   String  the url to connect to (ws or wss)
-         * @param protocols Array[String]   the protocols to ask the server for
+         * @param url   {string}  the url to connect to (ws or wss)
+         * @param protocols {Array.<string>}   the protocols to ask the server for
          */
         function initNewWs(url, protocols) {
             // webSocketObj = WebSocketManager.createWebSocket(address, protocol)
@@ -72,7 +72,7 @@ angular
 
 
             if ($scope.connectionSwitch) {
-                protocols = $scope.protocols.split(',');
+                protocols = [1,2,3]; //$scope.protocols.split(',');
                 address = $scope.wsAddress;
                 initNewWs(address, protocols);
                 msg = 'connection with ' + address + ' using [' + protocols.join(',') + ']';
