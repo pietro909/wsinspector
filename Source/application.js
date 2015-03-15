@@ -1,5 +1,13 @@
 angular
-    .module('wsInspector', [])
+    .module('wsInspector', ['WebSocket'])
+    .service('WebSocketService', ['WebSocketFactory', function(WebSocketFactory){
+        return {
+            openConnection : function(address, protocol) {
+                var 
+                    wsObj = WebSocketFactory.createWebSocket(address, protocol);
+            }
+        };
+    }])
     .controller('headerController', ['$scope', function ($scope) {
         'use strict';
 
@@ -14,7 +22,7 @@ angular
         });
 
     }])
-    .controller('applicationController', ['$scope', function ($scope) {
+    .controller('applicationController', ['$scope',function ($scope) {
         'use strict';
 
         var
@@ -42,7 +50,7 @@ angular
          * @param protocols {Array.<string>}   the protocols to ask the server for
          */
         function initNewWs(url, protocols) {
-            // webSocketObj = WebSocketManager.createWebSocket(address, protocol)
+            webSocketObj = WebSocketFactory.createWebSocket(address, protocol)
             /*
             webSocketObj.on('message', function (e) {
                 /*
